@@ -1,0 +1,38 @@
+[
+  {
+    "ID": "01",
+    "Environment": "https://www.saucedemo.com/",
+    "User": "standard_user",
+    "Password": "secret_sauce"
+  },
+  {
+    "ID": "02",
+    "Environment": "https://www.saucedemo.com/",
+    "User": "locked_out_user",
+    "Password": "secret_sauce"
+  },
+  {
+    "ID": "03",
+    "Environment": "https://www.saucedemo.com/",
+    "User": "problem_user",
+    "Password": "secret_sauce"
+  },
+  {
+    "ID": "04",
+    "Environment": "https://www.saucedemo.com/",
+    "User": "performance_glitch_user",
+    "Password": "secret_sauce"
+  },
+  {
+    "ID": "05",
+    "Environment": "https://www.saucedemo.com/",
+    "User": "error_user",
+    "Password": "secret_sauce"
+  },
+  {
+    "ID": "06",
+    "Environment": "https://www.saucedemo.com/",
+    "User": "visual_user",
+    "Password": "secret_sauce"
+  }
+]
