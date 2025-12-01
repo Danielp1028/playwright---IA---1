@@ -1,16 +1,24 @@
 import { Before, After, Given, When, Then, setDefaultTimeout } from '@cucumber/cucumber';
+import type { IWorld } from '@cucumber/cucumber';
+import { inicioSesionPorID } from './LoginStep';
 import { chromium } from 'playwright';
 import * as fs from 'fs';
 import * as path from 'path';
 
 setDefaultTimeout(60 * 1000);
 
-Before(async function () {
-  this.browser = await chromium.launch({ headless: false, slowMo: 50 });
+Before(async function (this: IWorld) {
+  const headlessEnv = process.env.HEADLESS;
+  const slowMoEnv = process.env.SLOWMO;
+  const headless = typeof headlessEnv !== 'undefined' ? (headlessEnv === '1' || headlessEnv?.toLowerCase() === 'true') : false;
+  const slowMo = slowMoEnv ? parseInt(slowMoEnv, 10) : 50;
+  // eslint-disable-next-line no-console
+  console.info(`Playwright launch - headless: ${headless}, slowMo: ${slowMo}, workers: ${process.env.WORKERS || '1'}`);
+  this.browser = await chromium.launch({ headless, slowMo });
   this.page = await this.browser.newPage();
 });
 
-After(async function (scenario) {
+After(async function (this: IWorld, scenario) {
   // Si el escenario falló, loguear detalles (nombre, ubicaciones y error) en la terminal
   try {
     if ((scenario as any)?.result?.status === 'FAILED') {
@@ -67,36 +75,53 @@ After(async function (scenario) {
   }
 });
 
-Given('I am on the login page', async function () {
-  await this.page.goto('https://www.saucedemo.com/');
+Given('I am on the login page', async function (this: IWorld) {
+  await this.page?.goto('https://www.saucedemo.com/');
 });
 
-When(/^Inicio de sesion con el usuario "([^"]+)"$/, async function (id: string) {
-  const usersPath = path.join(process.cwd(), 'src', 'data', 'users.json');
-  const raw = fs.readFileSync(usersPath, 'utf8');
-  const users = JSON.parse(raw) as Array<{ ID: string; Environment: string; User: string; Password: string }>;
-  const normalizedId = id.replace(/^ID\s*/i, '');
-  const userObj = users.find(u => u.ID === normalizedId);
-  if (!userObj) throw new Error(`Usuario con ID ${id} no encontrado en users.json`);
-
-  await this.page.goto(userObj.Environment);
-  await this.page.fill('#user-name', userObj.User);
-  await this.page.fill('#password', userObj.Password);
+When(/^Inicio de sesion con el usuario "([^"]+)"$/, async function (this: IWorld, id: string) {
+  await inicioSesionPorID(id, this.page as any);
 });
 
-When('I click the login button', async function () {
-  await this.page.click('#login-button');
+When('I click the login button', async function (this: IWorld) {
+  await this.page?.click('#login-button');
 });
 
-Then('I should be logged in successfully', async function () {
-  await this.page.waitForSelector('.inventory_list', { timeout: 5000 });
+Then('I should be logged in successfully', async function (this: IWorld) {
+  await this.page?.waitForSelector('.inventory_list', { timeout: 5000 });
 });
 
-Then('I should be redirected to the dashboard', async function () {
-  const url = this.page.url();
+Then('I should be redirected to the dashboard', async function (this: IWorld) {
+  const url = this.page?.url() || '';
   if (!url.includes('/inventory.html')) throw new Error(`No se redirigió al dashboard, url actual: ${url}`);
 });
 
-Then('I should see an error message', async function () {
-  await this.page.waitForSelector('[data-test="error"]', { timeout: 5000 });
+Then('I should see an error message', async function (this: IWorld) {
+  await this.page?.waitForSelector('[data-test="error"]', { timeout: 5000 });
+});
+
+// Pasos añadidos que faltaban en el feature
+When('I leave the username field empty', async function (this: IWorld) {
+  await this.page?.fill('#user-name', '');
+});
+
+When('I leave the password field empty', async function (this: IWorld) {
+  await this.page?.fill('#password', '');
+});
+
+Then('I should remain on the login page', async function (this: IWorld) {
+  const url = this.page?.url() || '';
+  if (url.includes('/inventory.html')) {
+    throw new Error(`Se redirigió al dashboard pero debería permanecer en la página de login. URL actual: ${url}`);
+  }
+  await this.page?.waitForSelector('#login-button', { timeout: 5000 });
+});
+
+Then('I should see validation messages for required fields', async function (this: IWorld) {
+  await this.page?.waitForSelector('[data-test="error"]', { timeout: 5000 });
+  const txt = await this.page?.textContent('[data-test="error"]');
+  const hasValidation = !!txt && (txt.includes('Username is required') || txt.includes('Password is required') || txt.includes('Epic sadface'));
+  if (!hasValidation) {
+    throw new Error(`No se detectaron mensajes de validación esperados. Texto: ${txt}`);
+  }
 });

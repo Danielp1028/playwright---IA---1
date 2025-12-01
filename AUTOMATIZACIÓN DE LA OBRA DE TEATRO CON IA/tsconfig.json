@@ -10,7 +10,6 @@
     "rootDir": "src",
     "resolveJsonModule": true
   },
-  "include": ["src/steps","src/page","src/feature","src/data"]
-  ,
-  "exclude": ["src/Steps","src/Page","src/**/*.js"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
 }
