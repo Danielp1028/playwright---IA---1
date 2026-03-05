@@ -1,3 +1,6 @@
+// Este archivo es usado por Playwright CLI pero nuestros tests usan Cucumber + Playwright
+// La importación abajo puede marcar error en VS Code pero funciona correctamente en CLI
+// @ts-ignore
 import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({

@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "pretest:cucumber": "npx playwright install",
+    "build": "tsc --noEmit",
+    "check": "tsc --noEmit",
     "test:cucumber": "cucumber-js --require-module ts-node/register --require 'src/Steps/**/*.ts' 'src/feature/**/*.feature'",
     "test:cucumber:login1": "cucumber-js --require-module ts-node/register --require 'src/Steps/**/*.ts' --tags '@Login_1' 'src/feature/**/*.feature'",
     "test:cucumber:login2": "cucumber-js --require-module ts-node/register --require 'src/Steps/**/*.ts' --tags '@login_2' 'src/feature/**/*.feature'",
@@ -12,6 +15,7 @@
   },
   "devDependencies": {
     "@cucumber/cucumber": "^12.2.0",
+    "@playwright/test": "^1.58.2",
     "@types/node": "^24.10.1",
     "dayjs": "^1.11.19",
     "docx": "^9.5.1",
