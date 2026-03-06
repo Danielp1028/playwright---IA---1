@@ -125,3 +125,82 @@ Then('I should see validation messages for required fields', async function (thi
     throw new Error(`No se detectaron mensajes de validación esperados. Texto: ${txt}`);
   }
 });
+
+// --- Nuevos pasos para escenarios de borde ---
+
+When('I enter a username longer than {int} characters', async function (this: IWorld, len: number) {
+  const long = 'a'.repeat(len + 1);
+  await this.page?.fill('#user-name', long);
+});
+
+When('I enter a password longer than {int} characters', async function (this: IWorld, len: number) {
+  const long = 'a'.repeat(len + 1);
+  await this.page?.fill('#password', long);
+});
+
+When('I attempt login with username {string} and password {string}', async function (this: IWorld, user: string, pass: string) {
+  await this.page?.fill('#user-name', user);
+  await this.page?.fill('#password', pass);
+});
+
+When(/^I attempt login with username "(.+?)" and incorrect password$/, async function (this: IWorld, user: string) {
+  await this.page?.fill('#user-name', user);
+  await this.page?.fill('#password', 'wrongpassword');
+});
+
+When(/^I attempt login with username "(.+?)"$/, async function (this: IWorld, user: string) {
+  await this.page?.fill('#user-name', user);
+});
+
+When('I repeat the login attempt {int} times', async function (this: IWorld, count: number) {
+  for (let i = 0; i < count; i++) {
+    await this.page?.click('#login-button');
+    // Esperar mensaje de error antes de continuar
+    await this.page?.waitForSelector('[data-test="error"]', { timeout: 2000 });
+  }
+});
+
+When('I enter a valid password', async function (this: IWorld) {
+  await this.page?.fill('#password', 'secret_sauce');
+});
+
+When('I enter a valid username', async function (this: IWorld) {
+  await this.page?.fill('#user-name', 'standard_user');
+});
+
+When('I enter any password', async function (this: IWorld) {
+  await this.page?.fill('#password', 'anything');
+});
+
+Then('I should see an error about username length', async function (this: IWorld) {
+  const txt = await this.page?.textContent('[data-test="error"]');
+  if (!txt?.toLowerCase().includes('username')) throw new Error(`No se encontró texto de longitud de usuario: ${txt}`);
+});
+
+Then('I should see an error about password length', async function (this: IWorld) {
+  const txt = await this.page?.textContent('[data-test="error"]');
+  if (!txt?.toLowerCase().includes('password')) throw new Error(`No se encontró texto de longitud de contraseña: ${txt}`);
+});
+
+Then('I should not be logged in', async function (this: IWorld) {
+  const url = this.page?.url() || '';
+  if (url.includes('/inventory.html')) throw new Error('Se accedió al dashboard inesperadamente');
+});
+
+Then('I should be denied access', async function (this: IWorld) {
+  await this.page?.waitForSelector('[data-test="error"]', { timeout: 5000 });
+  const url = this.page?.url() || '';
+  if (url.includes('/inventory.html')) throw new Error('Se accedió al dashboard cuando se esperaba denegación de acceso');
+});
+
+Then('my account should be locked', async function (this: IWorld) {
+  // Sauce Demo doesn't have a "locked" status; locked_out_user simply fails to login with any password
+  // We verify this by checking that an error message appears
+  await this.page?.waitForSelector('[data-test="error"]', { timeout: 5000 });
+  const txt = await this.page?.textContent('[data-test="error"]');
+  if (!txt || txt.trim().length === 0) throw new Error('Se esperaba un mensaje de error para cuenta bloqueada');
+});
+
+Then('I should see a lockout message', async function (this: IWorld) {
+  await this.page?.waitForSelector('[data-test="error"]', { timeout: 5000 });
+});

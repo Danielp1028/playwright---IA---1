@@ -1,0 +1,119 @@
+[
+  {
+    "description": "    As a user\n    I want to be able to log in to the application\n    So that I can access my account",
+    "elements": [
+      {
+        "description": "",
+        "id": "login-functionality;successful-login-with-valid-credentials",
+        "keyword": "Scenario",
+        "line": 10,
+        "name": "Successful login with valid credentials",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1231914209
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "I am on the login page",
+            "match": {
+              "location": "src/Steps/cucumberSteps.ts:78"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 933100958
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 11,
+            "name": "Inicio de sesion con el usuario \"ID 01\"",
+            "match": {
+              "location": "src/Steps/cucumberSteps.ts:82"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 221522084
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 12,
+            "name": "I click the login button",
+            "match": {
+              "location": "src/Steps/cucumberSteps.ts:86"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 122936000
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 13,
+            "name": "I should be logged in successfully",
+            "match": {
+              "location": "src/Steps/cucumberSteps.ts:90"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4403542
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I should be redirected to the dashboard",
+            "match": {
+              "location": "src/Steps/cucumberSteps.ts:94"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 69582
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 216341916
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@login_functionality",
+            "line": 1
+          },
+          {
+            "name": "@Login_1",
+            "line": 9
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "login-functionality",
+    "line": 2,
+    "keyword": "Feature",
+    "name": "Login functionality",
+    "tags": [
+      {
+        "name": "@login_functionality",
+        "line": 1
+      }
+    ],
+    "uri": "src/feature/Inicio_sesion.feature"
+  }
+]

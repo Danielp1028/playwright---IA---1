@@ -24,3 +24,35 @@ Feature: Login functionality
         And I leave the password field empty
         And I click the login button
         Then I should see validation messages for required fields
+
+    @login_4
+    Scenario: Login with username exceeding max length
+        When I enter a username longer than 255 characters
+        And I enter a valid password
+        And I click the login button
+        Then I should see an error about username length
+        And I should remain on the login page
+
+    @login_5
+    Scenario: Login with password exceeding max length
+        When I enter a valid username
+        And I enter a password longer than 255 characters
+        And I click the login button
+        Then I should see an error about password length
+        And I should remain on the login page
+
+    @login_6
+    Scenario: Login attempt with SQL injection
+        When I attempt login with username "' OR '1'='1"
+        And I enter any password
+        And I click the login button
+        Then I should be denied access
+        And I should not be logged in
+
+    @login_7
+    Scenario: Account lockout attempt
+        When I attempt login with username "locked_out_user"
+        And I enter any password
+        And I click the login button
+        Then I should see an error message
+        And I should not be logged in

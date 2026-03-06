@@ -3,15 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "pretest:cucumber": "npx playwright install",
+    "pretest:cucumber": "npx playwright install && mkdir -p test-results",
     "build": "tsc --noEmit",
     "check": "tsc --noEmit",
-    "test:cucumber": "cucumber-js --require-module ts-node/register --require 'src/Steps/**/*.ts' 'src/feature/**/*.feature'",
-    "test:cucumber:login1": "cucumber-js --require-module ts-node/register --require 'src/Steps/**/*.ts' --tags '@Login_1' 'src/feature/**/*.feature'",
-    "test:cucumber:login2": "cucumber-js --require-module ts-node/register --require 'src/Steps/**/*.ts' --tags '@login_2' 'src/feature/**/*.feature'",
-    "test:cucumber:login3": "cucumber-js --require-module ts-node/register --require 'src/Steps/**/*.ts' --tags '@login_3' 'src/feature/**/*.feature'",
-    "test:cucumber:tag": "cucumber-js --require-module ts-node/register --require 'src/Steps/**/*.ts' --tags",
-    "test:cucumber:runtag": "sh -c 'tag=\"$1\"; shift; headless=0; workers=1; slowmo=50; while [ \"$#\" -gt 0 ]; do case \"$1\" in --headed) headless=0; shift;; --headless) headless=1; shift;; --workers) workers=\"$2\"; shift 2;; --slowmo) slowmo=\"$2\"; shift 2;; *) shift;; esac; done; HEADLESS=\"$headless\" WORKERS=\"$workers\" SLOWMO=\"$slowmo\" cucumber-js --require-module ts-node/register --require \"src/Steps/**/*.ts\" --tags \"$tag\" \"src/feature/**/*.feature\"' --"
+    "test:cucumber": "cucumber-js --require-module ts-node/register --require 'src/Steps/**/*.ts' --format '@cucumber/pretty-formatter' --format 'json:test-results/cucumber-report.json' 'src/feature/**/*.feature' && node scripts/report-summary.js",
+    "test:cucumber:login1": "cucumber-js --require-module ts-node/register --require 'src/Steps/**/*.ts' --format '@cucumber/pretty-formatter' --format 'json:test-results/login1-report.json' --tags '@Login_1' 'src/feature/**/*.feature' && node scripts/report-summary-single.js test-results/login1-report.json",
+    "test:cucumber:login2": "cucumber-js --require-module ts-node/register --require 'src/Steps/**/*.ts' --format '@cucumber/pretty-formatter' --format 'json:test-results/login2-report.json' --tags '@login_2' 'src/feature/**/*.feature' && node scripts/report-summary-single.js test-results/login2-report.json",
+    "test:cucumber:login3": "cucumber-js --require-module ts-node/register --require 'src/Steps/**/*.ts' --format '@cucumber/pretty-formatter' --format 'json:test-results/login3-report.json' --tags '@login_3' 'src/feature/**/*.feature' && node scripts/report-summary-single.js test-results/login3-report.json",
+    "test:cucumber:login4": "cucumber-js --require-module ts-node/register --require 'src/Steps/**/*.ts' --format '@cucumber/pretty-formatter' --format 'json:test-results/login4-report.json' --tags '@login_4' 'src/feature/**/*.feature' && node scripts/report-summary-single.js test-results/login4-report.json",
+    "test:cucumber:login5": "cucumber-js --require-module ts-node/register --require 'src/Steps/**/*.ts' --format '@cucumber/pretty-formatter' --format 'json:test-results/login5-report.json' --tags '@login_5' 'src/feature/**/*.feature' && node scripts/report-summary-single.js test-results/login5-report.json",
+    "test:cucumber:login6": "cucumber-js --require-module ts-node/register --require 'src/Steps/**/*.ts' --format '@cucumber/pretty-formatter' --format 'json:test-results/login6-report.json' --tags '@login_6' 'src/feature/**/*.feature' && node scripts/report-summary-single.js test-results/login6-report.json",
+    "test:cucumber:login7": "cucumber-js --require-module ts-node/register --require 'src/Steps/**/*.ts' --format '@cucumber/pretty-formatter' --format 'json:test-results/login7-report.json' --tags '@login_7' 'src/feature/**/*.feature' && node scripts/report-summary-single.js test-results/login7-report.json",
+    "test:cucumber:tag": "cucumber-js --require-module ts-node/register --require 'src/Steps/**/*.ts' --format '@cucumber/pretty-formatter' --tags",
+    "test:cucumber:runtag": "sh -c 'tag=\"$1\"; shift; headless=0; workers=1; slowmo=50; while [ \"$#\" -gt 0 ]; do case \"$1\" in --headed) headless=0; shift;; --headless) headless=1; shift;; --workers) workers=\"$2\"; shift 2;; --slowmo) slowmo=\"$2\"; shift 2;; *) shift;; esac; done; HEADLESS=\"$headless\" WORKERS=\"$workers\" SLOWMO=\"$slowmo\" cucumber-js --require-module ts-node/register --require \"src/Steps/**/*.ts\" --format \"@cucumber/pretty-formatter\" --format \"json:test-results/custom-report.json\" --tags \"$tag\" \"src/feature/**/*.feature\" && node scripts/report-summary.js' --"
   },
   "devDependencies": {
     "@cucumber/cucumber": "^12.2.0",

@@ -15,7 +15,12 @@ export default defineConfig({
     video: 'retain-on-failure',
     trace: 'on-first-retry',
   },
-  reporter: [['list'], ['html', { outputFolder: 'playwright-report', open: 'never' }]],
+  reporter: [
+    ['list'],
+    ['html', { outputFolder: 'playwright-report', open: 'never' }],
+    ['json', { outputFile: 'test-results/playwright-report.json' }],
+    ['junit', { outputFile: 'test-results/junit.xml' }]
+  ],
   projects: [
     { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
   ],

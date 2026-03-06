@@ -1,0 +1,777 @@
+[
+  {
+    "description": "    As a user\n    I want to be able to log in to the application\n    So that I can access my account",
+    "elements": [
+      {
+        "description": "",
+        "id": "login-functionality;successful-login-with-valid-credentials",
+        "keyword": "Scenario",
+        "line": 10,
+        "name": "Successful login with valid credentials",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 1351816582
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "I am on the login page",
+            "match": {
+              "location": "src/Steps/cucumberSteps.ts:78"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1064224416
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 11,
+            "name": "Inicio de sesion con el usuario \"ID 01\"",
+            "match": {
+              "location": "src/Steps/cucumberSteps.ts:82"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 247386125
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 12,
+            "name": "I click the login button",
+            "match": {
+              "location": "src/Steps/cucumberSteps.ts:86"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 118343249
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 13,
+            "name": "I should be logged in successfully",
+            "match": {
+              "location": "src/Steps/cucumberSteps.ts:90"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4231999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 14,
+            "name": "I should be redirected to the dashboard",
+            "match": {
+              "location": "src/Steps/cucumberSteps.ts:94"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 65292
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 187765167
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@login_functionality",
+            "line": 1
+          },
+          {
+            "name": "@Login_1",
+            "line": 9
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "login-functionality;failed-login-with-invalid-credentials",
+        "keyword": "Scenario",
+        "line": 16,
+        "name": "Failed login with invalid credentials",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 364867583
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "I am on the login page",
+            "match": {
+              "location": "src/Steps/cucumberSteps.ts:78"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 866207333
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 17,
+            "name": "Inicio de sesion con el usuario \"ID 02\"",
+            "match": {
+              "location": "src/Steps/cucumberSteps.ts:82"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 243033374
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 18,
+            "name": "I click the login button",
+            "match": {
+              "location": "src/Steps/cucumberSteps.ts:86"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 91815082
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 19,
+            "name": "I should see an error message",
+            "match": {
+              "location": "src/Steps/cucumberSteps.ts:99"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4974790
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 20,
+            "name": "I should remain on the login page",
+            "match": {
+              "location": "src/Steps/cucumberSteps.ts:112"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 9211583
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 122582000
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@login_functionality",
+            "line": 1
+          },
+          {
+            "name": "@login_2",
+            "line": 15
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "login-functionality;login-with-empty-fields",
+        "keyword": "Scenario",
+        "line": 22,
+        "name": "Login with empty fields",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 357521375
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "I am on the login page",
+            "match": {
+              "location": "src/Steps/cucumberSteps.ts:78"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 732769624
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 23,
+            "name": "I leave the username field empty",
+            "match": {
+              "location": "src/Steps/cucumberSteps.ts:104"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 63079458
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 24,
+            "name": "I leave the password field empty",
+            "match": {
+              "location": "src/Steps/cucumberSteps.ts:108"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 73048667
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 25,
+            "name": "I click the login button",
+            "match": {
+              "location": "src/Steps/cucumberSteps.ts:86"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 82615999
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 26,
+            "name": "I should see validation messages for required fields",
+            "match": {
+              "location": "src/Steps/cucumberSteps.ts:120"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 10824874
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 141531083
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@login_functionality",
+            "line": 1
+          },
+          {
+            "name": "@login_3",
+            "line": 21
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "login-functionality;login-with-username-exceeding-max-length",
+        "keyword": "Scenario",
+        "line": 29,
+        "name": "Login with username exceeding max length",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 359246083
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "I am on the login page",
+            "match": {
+              "location": "src/Steps/cucumberSteps.ts:78"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 966109042
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 30,
+            "name": "I enter a username longer than 255 characters",
+            "match": {
+              "location": "src/Steps/cucumberSteps.ts:131"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 66490207
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 31,
+            "name": "I enter a valid password",
+            "match": {
+              "location": "src/Steps/cucumberSteps.ts:163"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 54996583
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 32,
+            "name": "I click the login button",
+            "match": {
+              "location": "src/Steps/cucumberSteps.ts:86"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 87712792
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 33,
+            "name": "I should see an error about username length",
+            "match": {
+              "location": "src/Steps/cucumberSteps.ts:175"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2565042
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 34,
+            "name": "I should remain on the login page",
+            "match": {
+              "location": "src/Steps/cucumberSteps.ts:112"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4179459
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 120613208
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@login_functionality",
+            "line": 1
+          },
+          {
+            "name": "@login_4",
+            "line": 28
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "login-functionality;login-with-password-exceeding-max-length",
+        "keyword": "Scenario",
+        "line": 37,
+        "name": "Login with password exceeding max length",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 361756499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "I am on the login page",
+            "match": {
+              "location": "src/Steps/cucumberSteps.ts:78"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 713325542
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 38,
+            "name": "I enter a valid username",
+            "match": {
+              "location": "src/Steps/cucumberSteps.ts:167"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 66255541
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 39,
+            "name": "I enter a password longer than 255 characters",
+            "match": {
+              "location": "src/Steps/cucumberSteps.ts:136"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 53999583
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 40,
+            "name": "I click the login button",
+            "match": {
+              "location": "src/Steps/cucumberSteps.ts:86"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 91198916
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 41,
+            "name": "I should see an error about password length",
+            "match": {
+              "location": "src/Steps/cucumberSteps.ts:180"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2005832
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 42,
+            "name": "I should remain on the login page",
+            "match": {
+              "location": "src/Steps/cucumberSteps.ts:112"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3242041
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 125668874
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@login_functionality",
+            "line": 1
+          },
+          {
+            "name": "@login_5",
+            "line": 36
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "login-functionality;login-attempt-with-sql-injection",
+        "keyword": "Scenario",
+        "line": 45,
+        "name": "Login attempt with SQL injection",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 354273499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "I am on the login page",
+            "match": {
+              "location": "src/Steps/cucumberSteps.ts:78"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 851952292
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 46,
+            "name": "I attempt login with username \"' OR '1'='1\"",
+            "match": {
+              "location": "src/Steps/cucumberSteps.ts:151"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 73835417
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 47,
+            "name": "I enter any password",
+            "match": {
+              "location": "src/Steps/cucumberSteps.ts:171"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 76583541
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 48,
+            "name": "I click the login button",
+            "match": {
+              "location": "src/Steps/cucumberSteps.ts:86"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 80076624
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 49,
+            "name": "I should be denied access",
+            "match": {
+              "location": "src/Steps/cucumberSteps.ts:190"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3644416
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 50,
+            "name": "I should not be logged in",
+            "match": {
+              "location": "src/Steps/cucumberSteps.ts:185"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 73834
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 123706458
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@login_functionality",
+            "line": 1
+          },
+          {
+            "name": "@login_6",
+            "line": 44
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "login-functionality;account-lockout-attempt",
+        "keyword": "Scenario",
+        "line": 53,
+        "name": "Account lockout attempt",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 362243584
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 8,
+            "name": "I am on the login page",
+            "match": {
+              "location": "src/Steps/cucumberSteps.ts:78"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 917222041
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 54,
+            "name": "I attempt login with username \"locked_out_user\"",
+            "match": {
+              "location": "src/Steps/cucumberSteps.ts:151"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 64903707
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 55,
+            "name": "I enter any password",
+            "match": {
+              "location": "src/Steps/cucumberSteps.ts:171"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 73935791
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 56,
+            "name": "I click the login button",
+            "match": {
+              "location": "src/Steps/cucumberSteps.ts:86"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 85410416
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 57,
+            "name": "I should see an error message",
+            "match": {
+              "location": "src/Steps/cucumberSteps.ts:99"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3347874
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "And ",
+            "line": 58,
+            "name": "I should not be logged in",
+            "match": {
+              "location": "src/Steps/cucumberSteps.ts:185"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 44041
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 119571291
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@login_functionality",
+            "line": 1
+          },
+          {
+            "name": "@login_7",
+            "line": 52
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "login-functionality",
+    "line": 2,
+    "keyword": "Feature",
+    "name": "Login functionality",
+    "tags": [
+      {
+        "name": "@login_functionality",
+        "line": 1
+      }
+    ],
+    "uri": "src/feature/Inicio_sesion.feature"
+  }
+]
